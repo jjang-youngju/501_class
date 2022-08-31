@@ -1,0 +1,52 @@
+/* main.css */
+
+body, div, ul{
+    padding: 0;
+    margin: 0;
+}
+#header_wrap{
+    width: 100%;
+    height: 40px;
+    background: #6A84B7;
+}
+#global_wrap{
+    width: 1000px;
+    margin: 0 auto;
+    height: 40px;
+}
+#util{
+    float: right;
+    width: 500px;
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 9px 0 10px 0;
+}
+#util li{
+    float: left;
+    padding: 0 11px;
+    color: white;
+    font-size: 12px;
+    border-left: 1px solid #C4DEFF;
+}
+#util li:nth-child(1){
+    border: 0px;
+}
+.city{color: yellow;}
+.site01{color: greenyellow;}
+
+/*로고 메뉴 */
+#logo_menu_wrap{
+    width: 100%;
+    height: 80px;
+    background: #223C6F;
+}
+#logo_menu{
+    width: 1000px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+}
+#logo{width: 200px;}
+
+#menu{width: 800px;}
