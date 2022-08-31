@@ -1,2 +1,96 @@
 /* 0831.css */
 
+#main{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+.main_wrap{
+    text-align: end;
+    padding-right: 300px;
+    margin-top: 50px;
+}
+.main_wrap a{
+    text-decoration: none;
+    margin-left: 20px;
+}
+.list{
+    display: flex;
+    margin-left: 300px;
+    
+}
+.logo_img img{
+    width: 200px;
+    height: 100px;
+}
+.mlist li{
+    list-style-type: none;
+    float: left;
+    font-size: 20px;
+    margin-right: 150px;
+    text-align: center;
+    margin-top: 30px;
+}
+.mlist li:hover{
+    cursor: pointer;
+    color:pink;
+}
+.hana_img{
+    background: lightgreen;
+    height: 600px;
+    border-bottom: 2px solid lightgrey;
+    border-top: 2px solid lightgrey;
+    display: flex;
+}
+.main_img img{
+    margin-left: 300px;
+    margin-top: 50px;
+    height: 500px;
+}
+.hcare{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+.care img{
+    width: 180px;
+    height: 180px;
+    border-radius: 100px;
+}
+.mc{
+    background: yellow;
+}
+.re{
+    background: orange;
+}
+.hcare .a{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+    margin-top: 5px;
+}
+.foot p{
+    font-weight: 800;
+    font-size: 30px;
+}
+.foot{
+    margin-left: 300px;
+}
+.img_box{
+    display: flex;
+}
+.ctgr{
+    margin-left: 50px;
+}
+.ctgr img{
+    width: 100px;
+    height: 100px;
+    background:skyblue;
+    border-radius: 100px;
+}
+.ctgri{
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 15px;
+}
