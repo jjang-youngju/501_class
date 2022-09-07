@@ -10,27 +10,33 @@
 <body>
     <div id="main">
         <div id="main1">
-            <div class="logo">로고</div>
-            <div class="logo_img">이미지</div>
+            <div class="logo">
+                <img src="logo.png" class="logo_img">
+            </div>
+            <div class="logo2">
+                <img src="event.jpg" class="main_img">
+            </div>
         </div>
         <div id="main2">
             <div class="main_title">
                 <div class="mtitle">
-                    <div class="login_title">
-                        <p>아이디</p><input type="text" name="id" id="id">
-                    </div>
-                    <div class="login_title">
-                        <p>비밀번호</p><input type="text" name="pw" id="pw">
+                    <div class="ltitle">
+                        <div class="login_title c">
+                            <div style="width: 80px;"><p>아이디</p></div>
+                            <div><input type="text" name="id" id="id"></div>
+                        </div>
+                        <div class="login_title c">
+                            <div style="width: 80px;"><p>비밀번호</p></div>
+                            <div><input type="text" name="pw" id="pw"></div>
+                        </div>
                     </div>
                     <div class="login_title">
                         <div class="login_bt">
                             <input type="button" value="로그인">
                         </div>
-                        <div class="join_bt">
-                            <a href="">회원가입</a>
-                        </div>
-                        <div class="join_bt2">
-                            <a href="">아이디/비밀번호찾기</a>
+                        <div class="join">
+                                <a href="">회원가입</a>
+                                <a href="" class="find">아이디/비밀번호찾기</a>
                         </div>
                     </div>
                 </div>
@@ -43,8 +49,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="main_img">
-                이미지
+            <div id="mimg">
+                <img src="main.jpg" class="mimg_img">
             </div>
         </div>
     </div>
