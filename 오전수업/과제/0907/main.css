@@ -1,0 +1,52 @@
+/* main.css */
+
+body, div, ul, p{
+    margin: 0;
+    padding: 0;
+}
+#main{
+    width: 1200px;
+    height: 800px;
+    background: yellow;
+}
+#main1{
+    width: 1200px;
+    height: 100px;
+    display: flex;
+    background: red;
+}
+.logo{
+    width: 300px;
+    height: 100px;
+    background: orange;
+}
+.logo_img{
+    width: 900px;
+    height: 100px;
+    background: green;
+}
+#main2{
+    width: 1200px;
+    height: 700px;
+    display: flex;
+    background: beige;
+}
+.main_title{
+    width: 300px;
+    height: 700px;
+}
+.mtitle{
+    width: 300px;
+    height: 200px;
+    background: pink;
+}
+.sub_title{
+    width: 300px;
+    height: 500px;
+    background: hotpink;
+}
+.main_img{
+    width: 900px;
+    height: 700px;
+    background: yellow;
+}
