@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> js_test2.html </title>
+<script type="text/javascript">
+
+/*
+    //var num1 = 10;
+    //var num2 = 20;
+    //var num3 = 0;
+
+    //num3 = num2 % num1; // % : 나누기연산, 결과값은 나머지값
+    //num3 = num2 > num1; // 비교연산자, 비교연산자의 결과는 true, false
+
+    //num2 = 15;  num1 = 29;
+    //num3 = num2 >= num1;    // false
+    
+    //num2 = 11;  num1 = 12;
+    //num3 = num2 != num1;    // true
+    //num3 = num2 == num1;    //false
+
+    //var result;
+    //num1 = 21;  num2 = 36;  num3 = 25;
+    //result = num2 > num1 && num2 > num3;    //true
+    // 참 && 참 -> 참,  거짓 && 참 -> 거짓,
+    // 거짓 && 거짓 -> 거짓,    참 && 거짓 -> 거짓
+
+    //result = num1 > num2 || num2 > num3; //true
+    // 참 || 참 -> 참,  거짓 || 참 -> 참
+    // 참 || 거짓 -> 참,    거짓 || 거짓 -> 거짓
+
+    //result = (num1>10 || num2<40) && ( num3>100 && num2<10); //false
+
+        //조건연산자 : 조건식 ? 참일경우 내용 : 거짓일경우 내용;
+
+    var num1 = parseInt(prompt('정수 입력'));
+    var num2 = parseInt(prompt('정수 입력'));
+    
+    var result = num1 > num2 ? "큰수 :"+num2 : "큰수 :"+num1;
+
+    //조건연산자에서 참과 거짓에 해당하는 부분에 변수, 데잍터(정수,실수,문자열),
+    //  계산식, 조건연산자, 함수 등등 가능
+    //  단, 대입연산자 안됨!
+
+    document.write(result);
+
+    // 바이킹 탑승조건 키 130 이상 만 탑승가능
+    var num3 = parseInt(prompt('키 입력'));
+    
+    var tall = num3 >= 130 ? "탑승가능":"탑승불가";
+
+    document.write(tall);
+
+        //세개의 정수를 입력받아 가장 큰 수 출력
+
+        var num1 = parseInt(prompt('정수 입력'));
+        var num2 = parseInt(prompt('정수 입력'));
+        var num3 = parseInt(prompt('정수 입력'));
+        var result = 0;
+
+        // 방법.1)
+        num1 > num2 ? (num1 > num3 ? num1 : num3) : (num2 > num3 ? num2 : num3);
+        
+        //방법.2)
+        
+        result = num1 > num2 && num1 > num3 ? num1 : result;
+        result = num2 > num1 && num2 > num3 ? num2 : result;
+        result = num3 > num1 && num3 > num2 ? num3 : result;
+
+        //방법.3) 가장 나은 방식
+        var result = num1 > num2 ? num1 : num2;
+        result = result > num3 ? result : num3;
+
+        document.write(result);
+
+    //숫자 입력하여 4의 배수에 해당하는지 출력
+    // 힌트 %
+
+    var four = parseInt(prompt('정수입력'));
+    var result = 0;
+    var result = four%4 == 0 ? '4의배수': '4의 배수가 아니다';
+
+    document.write(result);
+*/
+
+    //주차장 요금 계산
+    // 주차장 기본요금은 1000원 (30분), 30분 이후 10분당 100원(10분 초과시)
+    //2시간 이상 주차시 기본요금은 1500원으로 변경
+    // 주차 시간 입력 하여 요금 출력 , 주차시간은 총 몇분으로만 입력
+    // 예시) 14분   요금 1000원
+    //      36분    요금 1000원
+    //      58분    요금 1200원
+    //      109분   요금 1700원
+    //      135분   요금 1600원
+    //      200분   요금 2300원
+    // 힌트 : 10/4 ->2.5, parseInt(10/4) ->2
+
+    var min = parseInt(prompt('주차시간 :'));
+    var basic = 1000;
+    var add = 100;
+    
+    var price = min >= 120 ? parseInt((min-120)/10)*add + basic + 500 + '원' : min >= 40 ? parseInt((min-30)/10)*add+basic+'원': basic+'원';
+
+    document.write("주차시간 : "+min+"분 주차요금 : "+ price);
+
+    /*
+    var time = parseInt(prompt("주차시간 : "));
+        var cost = 1000;
+        cost = time >= 120 ? 1500 : cost;
+        // 주차시간에 따른 기본요금
+        var ptime = time >= 120 ? time - 120 : time - 30;
+        //총 주차시간에서 기본시간 제외
+
+        var price = (parseInt(ptime/10) *100) + cost;
+
+        document.write("주차시간 : "+time+"분 주차요금 : "+ price);
+    */
+</script>
+</head>
+<body>
+    
+</body>
+</html>
