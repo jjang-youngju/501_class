@@ -116,6 +116,8 @@
 
         var price = (parseInt(ptime/10) *100) + cost;
 
+        price = time < 40 ? cost : price; // 기본시간 이상주차여부
+
         document.write("주차시간 : "+time+"분 주차요금 : "+ price);
     */
 </script>
