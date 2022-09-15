@@ -110,7 +110,7 @@
         default:
             document.write('잘못선택했습니다.');
     }
-*/
+
 
     var select = prompt("1.데이터저장   2.데이터 삭제   3.데이터 추가   4.데이터 수정   5.종료");
 
@@ -128,6 +128,69 @@
         default:
             document.write('메뉴를 다시 선택하세요.')
     }
-     
+
+
+
+//가위바위보 랜덤함수 사용
+//랜덤값 1.가위 2. 바위 3. 보
+//랜덤값에 따라 현재 가위바위보중 무엇을 내었는가 출력
+//switch문으로 구현
+
+var com1 = Math.floor(Math.random()*3)+1;
+
+switch(com1){
+    case 1:
+        document.write('가위');
+        break;
+    case 2:
+        document.write('바위');
+        break;
+    case 3:
+        document.write('보');
+        break;
+    default:
+        document.write('다시입력')
+}
+
+
+    var user = parseInt(prompt("1. 가위 2. 바위 3. 보"));
+    var com = Math.floor(Math.random()*3)+1;
+
+    switch( user - com ){
+        case -2:
+        case 1:
+            document.write('나의 승');
+            break;
+        case -1:
+        case 2:
+            document.write('나의 패');
+            break;
+        case 0:
+            document.write('비김');
+            break;
+        default:
+            document.write('다시입력')
+    }
+*/
+
+//점수 입력 받아서 90점 이상이면 'A등급', 80점이상이면 'B등급'.
+//  70점 이상이면 'C등급' 나머지는 'F등급'이라고 출력하기.
+
+var jumsu = parseInt(prompt("점수입력"));
+
+switch( parseInt(jumsu/10) ){
+    case 10:
+    case 9:
+        document.write("A등급");
+        break;
+    case 8:
+        document.write("B등급");
+        break;
+    case 7:
+        document.write("C등급");
+        break;
+    default:
+        document.write("F등급");
+}
 </script>
 </html>
