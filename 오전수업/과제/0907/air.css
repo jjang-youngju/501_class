@@ -70,6 +70,7 @@ a{
     background: beige;
     display: flex;
     padding-left: 62px;
+    flex-wrap: wrap;
 }
 .item_img{
     width: 200px;
