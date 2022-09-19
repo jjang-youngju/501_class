@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var idx =1;
+        function next(){
+            idx++;
+            if(idx == 5){
+                idx=1;
+            }
+            var img = document.getElementById("mimg");
+            img.src = '../../image/'+idx+'.jpg';
+        }
+        //var idc = 4;
+        function pre(){
+            idx--;
+            if(idx == 0){
+                idx=4;
+            }
+            var img = document.getElementById("mimg");
+            img.src = '../../image/'+idx+'.jpg';
+        }
+
+        var set = '';
+
+        function start(){
+            set = setInterval(function(){
+                idx++;
+                if(idx == 5){
+                    idx =1;
+                }
+                var img = document.getElementById("mimg");
+                img.src = '../../image/'+ idx + '.jpg';
+            },300);   
+        }
+        function end(){
+            clearInterval(set);
+        }
+    </script>
+</head>
+<body>
+    <img 
+    style="width: 300px; height: 300px;"
+    src="../../image/1.jpg"
+    id="mimg">
+    <div>
+        <button onclick="start()">시작</button>
+        <button onclick="end()">종료</button>
+        <button onclick="pre()"> 이전 </button>
+        <button onclick="next()"> 다음 </button>
+    </div>
+</body>
+</html>
