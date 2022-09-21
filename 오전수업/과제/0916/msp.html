@@ -57,37 +57,37 @@
                 res.innerHTML = '비겼어';
             }else if(com==2){
                 document.getElementById("mimg").src = "2.png";
-                res.innerHTML = '이겼어';
-            }else{
-                document.getElementById("mimg").src = "3.png";
-                res.innerHTML ='졌어';
-            }
-        }
-        if(srp1=="s"){
-            if(com==1){
-                document.getElementById("mimg").src = "1.png";
                 res.innerHTML = '졌어';
-            }else if(com==2){
-                document.getElementById("mimg").src = "2.png";
-                res.innerHTML = '비겼어';
             }else{
                 document.getElementById("mimg").src = "3.png";
                 res.innerHTML ='이겼어';
             }
         }
-        if(srp1=="p"){
+        if(srp1=="s"){
             if(com==1){
                 document.getElementById("mimg").src = "1.png";
                 res.innerHTML = '이겼어';
             }else if(com==2){
                 document.getElementById("mimg").src = "2.png";
+                res.innerHTML = '비겼어';
+            }else{
+                document.getElementById("mimg").src = "3.png";
+                res.innerHTML ='졌어';
+            }
+        }
+        if(srp1=="p"){
+            if(com==1){
+                document.getElementById("mimg").src = "1.png";
                 res.innerHTML = '졌어';
+            }else if(com==2){
+                document.getElementById("mimg").src = "2.png";
+                res.innerHTML = '이겼어';
             }else{
                 document.getElementById("mimg").src = "3.png";
                 res.innerHTML ='비겼어';
             }
         }
-         bangbang = setTimeout(textchange,1000);
+         bangbang = setTimeout(textchange,2000);
         
     }
     </script>
