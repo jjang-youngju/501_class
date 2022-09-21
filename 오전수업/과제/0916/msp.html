@@ -6,21 +6,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> msp.html </title>
 <link rel="stylesheet" type="text/css" href="msp.css">
-<script type="text/javascript">
 
-</script>
 </head>
-<body>
+<body onload=textchange()>
     <div id="main">
         <h1> 가위! 바위! 보!</h1>
         <div class="com">
-            <img src="img/1.png">
+            <img id="mimg" src="1.png">
         </div>
         <div class="me">
-            <div class="m"><img src="img/1.png"></div>
-            <div class="s"><img src="img/2.png"></div>
-            <div class="p"><img src="img/3.png"></div>
+            <div class="m"><button id="m" onclick="msp(this)"><img src="1.png"></button></div>
+            <div class="s"><button id="s" onclick="msp(this)"><img src="2.png"></button></div>
+            <div class="p"><button id="p" onclick="msp(this)"><img src="3.png"></button></div>
         </div>
+        <div id="result">결과</div>
     </div>
 </body>
+<script type="text/javascript">
+    var bang=0;
+    var bangbang;
+    var result = document.getElementById("result");
+    function textchange(){
+        result = "";
+        if(bang ==0){
+            document.getElementById("mimg").src="1.png";
+            bang++;
+        }else if(bang ==1){
+            document.getElementById("mimg").src="2.png";
+            bang++;
+        }else{
+            document.getElementById("mimg").src="3.png";
+            bang =0;
+        }
+        bangbang = setTimeout(textchange,100);
+        
+    }
+
+    // var m = document.getElementById("m");
+    // var s = document.getElementById("s");
+    // var p = document.getElementById("p");
+    // var msp = document.getElementById("mimg");
+    function msp(srp){
+        clearTimeout(bangbang)
+        var res = document.getElementById("result");
+        var com = Math.floor(Math.random()*3)+1;
+        var srp1 = srp.id;
+        if(srp1=="m"){
+            if(com==1){
+                document.getElementById("mimg").src = "1.png";
+                res.innerHTML = '비겼어';
+            }else if(com==2){
+                document.getElementById("mimg").src = "2.png";
+                res.innerHTML = '이겼어';
+            }else{
+                document.getElementById("mimg").src = "3.png";
+                res.innerHTML ='졌어';
+            }
+        }
+        if(srp1=="s"){
+            if(com==1){
+                document.getElementById("mimg").src = "1.png";
+                res.innerHTML = '졌어';
+            }else if(com==2){
+                document.getElementById("mimg").src = "2.png";
+                res.innerHTML = '비겼어';
+            }else{
+                document.getElementById("mimg").src = "3.png";
+                res.innerHTML ='이겼어';
+            }
+        }
+        if(srp1=="p"){
+            if(com==1){
+                document.getElementById("mimg").src = "1.png";
+                res.innerHTML = '이겼어';
+            }else if(com==2){
+                document.getElementById("mimg").src = "2.png";
+                res.innerHTML = '졌어';
+            }else{
+                document.getElementById("mimg").src = "3.png";
+                res.innerHTML ='비겼어';
+            }
+        }
+         bangbang = setTimeout(textchange,1000);
+        
+    }
+    </script>
 </html>
