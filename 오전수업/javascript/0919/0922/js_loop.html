@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 반복문
+        // for(초기값;조건식;증감식)
+        // 랜덤값(랜덤 범위 1~100) 중에서 4의 배수만 출력하기
+        // 20번 반복하여 4의 배수만 출력하기
+/* 
+        for(var i=1;i<=20;i++){
+            var num = Math.floor(Math.random()*100)+1;
+            if(num%4 ==0){
+                document.write(num+'<br>');
+            }
+        }
+        document.write("<hr>");
+        
+        
+        // 입력은 prompt로 입력하기
+        // 반복횟수 10번
+        // 랜덤범위는 1~10
+        // 10번 숫자를 입력하여 입력한 숫자가 랜덤값과 일치하면
+        // 지뢰밟음 사망, 일치하지 않으면 회피성공 출력하기
+        // 반복문이 한번 동작할때마다 새로운 랜덤값 발생
+         
+        
+       for(i=1;i<=10;i++){
+            var num = parseInt(prompt("숫자입력"));
+            var com = Math.floor(Math.random()*10)+1;
+                if(num>=1 && num<=10){
+                    if(num==com){
+                        document.write("나 : "+num+" 컴 : "+com+" 지뢰밟음 사망"+'<br>');
+                    }
+                    if(num!=com){
+                        document.write("나 : "+num+" 컴 : "+com+" 회피성공"+'<br>');
+                    }
+                }else{
+                    alert('1~10까지만 입력해주세요.');
+                    i--;
+                }
+        }
+
+        // 선생님이 풀어준 방법
+        for(var i=1;i<=10;i++){
+            var num =0;
+            do{
+                num=parseInt(prompt());
+            }while(!(num >=1 && num <=10));
+
+            var r = Math.floor(Math.random()*10)+1;
+            if(num==r) document.write('지뢰..'+num+':'+r+'<br>');
+            else document.write('피했다.'+num+':'+r+'<br>');
+        }
+
+
+        // 구구단
+        for(var i=2;i<=9;i++){
+            for(var k=1;k<=9;k++){
+                document.write(i+"*"+k+"="+i*k+'<br>');
+            }
+        }
+
+
+        //별다섯개에서 하나씩 줄어들어 나오게 출력하기
+        for(var i=1;i<=5;i++){
+            for(var k=5;k>=i;k--){
+                document.write('*');
+            }
+            document.write('<br>');
+        }
+*/
+
+        // 비밀번호 찾기
+        /*
+        1.  비밀번호는 총 4자리 숫자다.
+        2.  비밀번호는 각 자리는 1~9중 하나이다.
+        3.  비밀번호에 중복은 없다. 예) 2239안됨
+        4.  4자리 숫자중 첫번째 숫자는 세번째 숫자보다 7크다.
+        5.  두번째 숫자는 네번째 숫자보다 작다.
+        6.  비밀번호를 역순으로 한 숫자와 비밀번호를 더하면 16566이다.
+        7.  위 조건에 맞는 비밀번호 4자리를 출력하시오.
+        */
+
+        //방법1.)
+        for(var i=8;i<=9;i++){
+            for(var k=1;k<=9;k++){
+                if(i!=k){
+                    for(var m=1;m<=9;m++){
+                        if(i!=m && k!=m){
+                            if(i == m+7){
+                                for(var u=1;u<=9;u++){
+                                    if(i!=u && k!=a&& m != u){
+                                        if(k<u){
+                                            var num = i.toString()+k.toString()+m.toString()+u.toString();
+                                            var num1 = u.toString()+m.toString()+k.toString()+i.toString();
+                                            if(parseInt( num)+parseInt( num1) == 16566){
+                                                document.write(num+'<br>');
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //방법2)
+        for(var a=1;a<=9; a++){
+            for(var b=1; b<=9; b++){
+                for(var c=1;c<=9;c++){
+                    for(var d=1;d<=9;d++){
+                        if(a!=b && a!=c && a!=d && b!=c && b!=d && c!=d){
+                            if(a==c+7){
+                                if(b<d){
+                                    var e =(a*1000)+(b*100)+(c*10)+d;
+                                    var f =(d*1000)+(c*100)+(b*10)+a;
+                                    if(e+f==16566){
+                                        document.write(e);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
