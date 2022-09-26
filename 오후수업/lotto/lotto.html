@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 제 1회 DW 로또프로그램 </title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .lotto{
+            width: 500px;
+            margin: 50px auto;
+            background-color: #ececec;
+        }
+    </style>
+</head>
+<body>
+    <!-- 로또번호를 입력하는 UI(user Interface) -->
+    <div id="lotto" class="lotto">
+        <input id="first_number" type="text" placeholder="로또번호를 입력해주세요.." value="">
+        <input id="second_number" type="text" placeholder="로또번호를 입력해주세요.." value="">
+        <input id="third_number" type="text" placeholder="로또번호를 입력해주세요.." value="">
+        <input id="fourth_number" type="text" placeholder="로또번호를 입력해주세요.." value="">
+        <input id="fifth_number" type="text" placeholder="로또번호를 입력해주세요.." value="">
+        <input id="sixth_number" type="text" placeholder="로또번호를 입력해주세요.." value="">
+        <div><button onclick="doCheckLottoNumber()">입력완료</button></div>
+    </div>
+    <!-- 결과를 확인하는 UI -->
+    <div class="lotto">
+        <h2> 2022-09-22 1회차 결과 </h2>
+        <h3 id="result">1234</h3>
+        <p id="rank">4</p>
+    </div>
+</body>
+<script>
+    doCheckLottoNumber2();
+    /*
+    1.기능을 정의한다.
+        ex)
+        ***로또에 관련된 기능 나열하기
+        1-1.로또번호를 입력하다.    Δ
+        1-2.로또번호를 검증하다.    Δ
+            1-2-1.  입력한 번호를 검사하다.(1~45안에 있는 숫자인지 판별)    Δ
+            1-2-2.  중복숫자 체크하다(중복 불가능)  Δ
+        1-3.로또결과를 확인하다.    Δ
+        1-4.등수를 확인하다.
+        1-5.당첨금액을 확인하다.
+        1-6.추첨을 종료하다.
+    2.기능을 구현한다.
+    3.기능을 테스트한다.
+    */
+
+    //1-2.로또번호를 검증하다.
+    // 함수(메소드) 이름을 작성할 때는 동사로 한다.
+    // 메소드 이름은 길면 길수록 좋다.
+    // 메소드 이름 처음에 대문자가 아니라 소문자가 온다. ex) doLogin(o),DoLogin(x)
+   function doCheckLottoNumber(){
+    var first_number = document.getElementById('first_number').value;
+    var second_number = document.getElementById('second_number').value;
+    var third_number = document.getElementById('third_number').value;
+    var fourth_number = document.getElementById('fourth_number').value;
+    var fifth_number = document.getElementById('fifth_number').value;
+    var sixth_number = document.getElementById('sixth_number').value;
+    var isSuccess = true; // 번호 확인 여부
+    var lottoNumber = []; //배열 생성
+
+    isSuccess = doCheckInputNumber(first_number);
+    if(!isSuccess){
+        // 만약 siSuccess가 false라면
+        alert('숫자는 1~45에 있는 숫자로 입력해야 합니다!!');
+        return false;
+    }
+    lottoNumber[0] = first_number; // if로 검증한 후 배열 0번째에 값을 대입!
+    isSuccess = doCheckInputNumber(second_number);
+    if(!isSuccess){
+        // 만약 siSuccess가 false라면
+        alert('숫자는 1~45에 있는 숫자로 입력해야 합니다!!');
+        return false;
+    }
+    lottoNumber[1] = second_number; // if로 검증한 후 배열 0번째에 값을 대입!
+    isSuccess = doCheckInputNumber(third_number);
+    if(!isSuccess){
+        // 만약 siSuccess가 false라면
+        alert('숫자는 1~45에 있는 숫자로 입력해야 합니다!!');
+        return false;
+    }
+    lottoNumber[2] = third_number; // if로 검증한 후 배열 0번째에 값을 대입!
+    isSuccess = doCheckInputNumber(fourth_number);
+    if(!isSuccess){
+        // 만약 siSuccess가 false라면
+        alert('숫자는 1~45에 있는 숫자로 입력해야 합니다!!');
+        return false;
+    }
+    lottoNumber[3] = fourth_number; // if로 검증한 후 배열 0번째에 값을 대입!
+    isSuccess = doCheckInputNumber(fifth_number);
+    if(!isSuccess){
+        // 만약 siSuccess가 false라면
+        alert('숫자는 1~45에 있는 숫자로 입력해야 합니다!!');
+        return false;
+    }
+    lottoNumber[4] = fifth_number; // if로 검증한 후 배열 0번째에 값을 대입!
+    isSuccess = doCheckInputNumber(sixth_number);
+    if(!isSuccess){
+        // 만약 siSuccess가 false라면
+        alert('숫자는 1~45에 있는 숫자로 입력해야 합니다!!');
+        return false;
+    }
+    lottoNumber[5] = sixth_number; // if로 검증한 후 배열 0번째에 값을 대입!
+    var result = doCheckOverlapNumber(lottoNumber);
+    if(result == 0){
+        // 숫자 중복 x, 숫자 1~45안에 모두 포함
+        document.getElementById('first_number').readOnly = true; //input 입력막기
+        document.getElementById('second_number').readOnly = true;
+        document.getElementById('third_number').readOnly = true;
+        document.getElementById('fourth_number').readOnly = true;
+        document.getElementById('fifth_number').readOnly = true;
+        document.getElementById('sixth_number').readOnly = true;
+        alert('로또 입력완료');
+    }
+   }
+
+   // 중복된 숫자 판별 하는 함수
+   function doCheckOverlapNumber(lottoNumber){
+    console.log(lottoNumber); //배열 형태로 출력
+    var count = 0;
+    for(var i=0;i<lottoNumber.length;i++){
+        for(var j=0;j<lottoNumber.length;j++){
+            if(i!=j){
+                if(lottoNumber[i] == lottoNumber[j]){
+                    ++count;
+                }
+            }
+        }
+        if(count>0){
+            alert('로또숫자는 중복될수 없습니다.');
+            break;
+        }
+    }
+   }
+
+   // 입력한 숫자가 1~45인지 확인하는 함수
+   function doCheckInputNumber(number){
+    // && : and 연산자
+    if(number >= 1 && number <= 45){
+        return true;
+    }
+    return false;
+   }
+/*
+   function doCheckLottoNumber2(){
+    //2번째 방법
+    // children : 부모태그를 기준으로 자식태그를 가져옴
+    var lotto = document.getElementById('lotto').children; //결과를 배열로 리턴해줌
+    console.log(lotto);
+    console.log(lotto.length);
+    for(var i=0;i<lotto.length;i++){
+        console.log(lotto[i].localName); //자식요소 출력
+        if(lotto[i].localName == 'input'){
+            var value = lotto[i].value;
+            console.log(value); //for문을 이용한 input value 가져오기
+        }
+    }
+   }
+*/
+
+   // 로또 등수를 확인하는 메소드
+   function doCheckLottoRank(){
+    function doCheckLottoResult(){
+        var lottoResult = [];
+        lottoResult[0] = Math.floor(Math.random()*45)+1;
+        lottoResult[1] = Math.floor(Math.random()*45)+1;
+        lottoResult[2] = Math.floor(Math.random()*45)+1;
+        lottoResult[3] = Math.floor(Math.random()*45)+1;
+        lottoResult[4] = Math.floor(Math.random()*45)+1;
+        lottoResult[5] = Math.floor(Math.random()*45)+1;
+        return lottoResult;
+    }
+   }
+</script>
+</html>
