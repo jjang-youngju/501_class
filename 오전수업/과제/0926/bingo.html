@@ -15,7 +15,7 @@
         <div>
             <h2>user</h2>
         </div>
-        <div class="mbingo">
+        <div id="mbingo" class="mbingo">
             <div class="bgo">
                 <div class="mbgo"></div>
                 <div class="mbgo"></div>
@@ -52,7 +52,17 @@
                 <div class="mbgo"></div>
             </div>
         </div>
-
+        <div class="bt"><button onclick="start()">시작하기</button></div>
     </div>
 </body>
+<script>
+    function start(){
+        var mbingo = document.getElementById('mbingo');
+        var num = Math.floor(Math.random()*100)+1;
+        for(var i=1;i<26;i++){
+            var mbingo = document.getElementById('mbingo');
+    
+        }
+    }
+</script>
 </html>
