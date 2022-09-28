@@ -17,39 +17,39 @@
         </div>
         <div id="mbingo" class="mbingo">
             <div class="bgo">
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
+                <div class="mbgo" id="bingo1"></div>
+                <div class="mbgo" id="bingo2"></div>
+                <div class="mbgo" id="bingo3"></div>
+                <div class="mbgo" id="bingo4"></div>
+                <div class="mbgo" id="bingo5"></div>
             </div>
             <div class="bgo">
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
+                <div class="mbgo" id="bingo6"></div>
+                <div class="mbgo" id="bingo7"></div>
+                <div class="mbgo" id="bingo8"></div>
+                <div class="mbgo" id="bingo9"></div>
+                <div class="mbgo" id="bingo10"></div>
             </div>
             <div class="bgo">
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
+                <div class="mbgo" id="bingo11"></div>
+                <div class="mbgo" id="bingo12"></div>
+                <div class="mbgo" id="bingo13"></div>
+                <div class="mbgo" id="bingo14"></div>
+                <div class="mbgo" id="bingo15"></div>
             </div>
             <div class="bgo">
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
+                <div class="mbgo" id="bingo16"></div>
+                <div class="mbgo" id="bingo17"></div>
+                <div class="mbgo" id="bingo18"></div>
+                <div class="mbgo" id="bingo19"></div>
+                <div class="mbgo" id="bingo20"></div>
             </div>
             <div class="bgo">
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
-                <div class="mbgo"></div>
+                <div class="mbgo" id="bingo21"></div>
+                <div class="mbgo" id="bingo22"></div>
+                <div class="mbgo" id="bingo23"></div>
+                <div class="mbgo" id="bingo24"></div>
+                <div class="mbgo" id="bingo25"></div>
             </div>
         </div>
         <div class="bt"><button onclick="start()">시작하기</button></div>
@@ -57,11 +57,10 @@
 </body>
 <script>
     function start(){
-        var mbingo = document.getElementById('mbingo');
-        var num = Math.floor(Math.random()*100)+1;
         for(var i=1;i<26;i++){
-            var mbingo = document.getElementById('mbingo');
-    
+            var bingo = document.getElementById('bingo'+i);
+            var bg = Math.floor(Math.random()*100)+1;
+            bingo.innerHTML= bg;
         }
     }
 </script>
