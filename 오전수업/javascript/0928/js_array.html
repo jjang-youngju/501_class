@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> js_array.html </title>
+    
+    <script>
+        //  \t -> tab
+        //  lotto.txt 파일 오픈하여 화면에 출력하기
+        //  출력 형태는 
+        //  회차    발표일  번호1   번호2   번호3   번호4   번호5   번호6   보너스
+
+        //  파일안에 있는 내용을 위 처럼 구분하여 출력하기
+        //  ul 또는 table 태그 사용하면 됨
+        var list = new Array(); //전역
+        window.onload=function(){   // onload는 브라우저에 출력된이후를 뜻함. window.onload는
+                                    // 브라우저에 모든 html이 출력된 이후
+            document.getElementById("docread").addEventListener('change',readFile);
+        };
+        
+        async function readFile(e){
+            var file = e.target.files[0];
+            if(!file){ //   파일객체 유무
+                return; //  존재하지 않으면 종료
+            }
+
+            var text = await file.text();
+            list = text.split('\n');
+            make_list();
+           
+        } 
+
+        function make_list(){
+            var out = "<table>";
+
+                out += '<tr> <th>회차</th><th>발표일</th><th>번호1</th><th>번호2</th>';
+                out += '<th>번호3</th><th>번호4</th><th>번호5</th><th>번호6</th></tr>';  
+                for(var i in list){
+                    out += "<tr>";
+                    let temp = list[i].split("\t");
+                        for(var k in temp){
+                            out += "<td>" +temp[k]+ "</td>";
+                        }
+                    out += "</tr>";
+                }
+
+            out += "</table>";
+
+            document.getElementById("list").innerHTML = out;
+        }
+        
+       
+/*
+        async function readFile(e){
+            var file = e.target.files[0];
+            if(!file){
+                return;
+            }
+            var text = await file.text();
+            list = text.split('\n');
+        }
+        var list = new Array();
+        function out_list(){
+            var out = '';
+            for(let i in list){
+                out += list[i]+'<br>';
+            }
+            document.querySelector('#list').innerHTML = out;
+        }
+        */
+    </script>
+    <style>
+       table tr td{
+        border: 1px solid black;
+        width: 50px;
+       }
+    </style>
+</head>
+<body>
+    <div>
+        <!-- <input type="file" id="docread"> -->
+        <input type="file" id="docread">
+        <!-- <input type="button" onclick="out_list()" value="리스트"> -->
+    </div>
+    <!-- <div class="title"> -->
+        <!-- <ul>회차</ul> -->
+        <!-- <ul>발표일</ul> -->
+        <!-- <ul>번호1</ul> -->
+        <!-- <ul>번호2</ul> -->
+        <!-- <ul>번호3</ul> -->
+        <!-- <ul>번호4</ul> -->
+        <!-- <ul>번호5</ul> -->
+        <!-- <ul>번호6</ul> -->
+    <!-- </div> -->
+    <div id="list"></div>
+</body>
+</html>
