@@ -51,13 +51,13 @@
                 <div class="mbgo" id="bingo24"></div>
                 <div class="mbgo" id="bingo25"></div>
             </div>
-        </div>
+        </div class="bingo_bt">
         <div class="bt"><button onclick="start()">시작하기</button></div>
     </div>
 </body>
 <script>
     function start(){
-        for(var i=1;i<26;i++){
+        for(var i=1;i<=25;i++){
             var bingo = document.getElementById('bingo'+i);
             var bg = Math.floor(Math.random()*100)+1;
             bingo.innerHTML= bg;
