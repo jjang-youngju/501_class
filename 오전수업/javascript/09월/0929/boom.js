@@ -31,7 +31,7 @@ window.onload = function(){
             let n = this.dataset.idx;
             if(board[n] == 1){
                 this.style.background =
-                    'url(../../image/boom.png) no-repeat center center';
+                    'url(../../../image/boom.png) no-repeat center center';
                     this.style.backgroundSize = 'cover';
                     //this.innerHTML = "<img src='../../image/boom.png'>";
             }else this.style.background = 'rgb(230,230,230)'; //this = bm[i]
