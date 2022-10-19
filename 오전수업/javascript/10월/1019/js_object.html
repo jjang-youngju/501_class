@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_object.html</title>
+    <script>
+        function new_window() {
+            // alert(screen.height);
+            var Mwidth = screen.width;
+            var Mheight = screen.height;
+
+            var width = 500, height = 700;
+            var left = Mwidth / 2 - width / 2;
+            var top = Mheight / 2 - height / 2;
+            var url = "child.html"
+            var win_name = " ";
+            var option = "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top;
+
+            var child = window.open(url, win_name, option);
+            //child 변수에 새윈도우의 핸들값 저장
+
+            var name = document.getElementById("name").value;
+            child.document.getElementById("name_view").innerHTML = name;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>첫번째윈도우</h1>
+
+    <input type="text" name="name" id="name" placeholder="이름">
+
+    <button onclick="new_window()">전송</button>
+
+    <input type="text" id="age">
+    
+
+    <!-- 
+        width : 새창의 너비 지정
+        left : 모니터 화면 왼쪽에서부터 위치
+        top : 모니터 화면 위쪽에서부터 위치
+        channelmode : 전체화면(yes,NO)
+        fullscreen : 전체화면 (yes,no)
+        location : 주소줄 표시여부(yes,no)
+        menubar : 메뉴바 표시여부(yes,no)
+        scrollbars : 스크롤바 표시여부(yes,no)
+        status : 상태바 표시여부(yes,no)
+        resizable : window크기 변경 가능 여부(yes,no)
+        toolbat : 툴바 표시여부(yes,no)
+     -->
+</body>
+
+</html>
