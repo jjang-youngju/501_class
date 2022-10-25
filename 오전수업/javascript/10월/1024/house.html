@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+</body>
+</html>
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle="rgb(255,0,0)";
+    ctx.fillRect(250, 200, 80, 200); // 좌표 너비 높이
+    ctx.fillStyle="rgb(250,237,125)";
+    ctx.fillRect(200,400,600,400);
+
+    ctx.beginPath();
+    ctx.strokeStyle ="rgb(171,242,0)";
+    ctx.moveTo(500, 100); //시작점
+    ctx.lineTo(200, 400); //종료점
+    ctx.lineTo(800, 400); //종료점
+
+    ctx.closePath();
+    ctx.fillStyle ="rgb(171,242,0)";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(250,150,30,0,2*Math.PI,true);
+    ctx.closePath();
+    ctx.fillStyle="blue";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(220,100,20,0,2*Math.PI,true);
+    ctx.closePath();
+    ctx.fillStyle="blue";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(220,100,20,0,2*Math.PI,true);
+    ctx.closePath();
+    ctx.fillStyle="blue";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(195,60,15,0,2*Math.PI,true);
+    ctx.closePath();
+    ctx.fillStyle="blue";
+    ctx.fill();
+    ctx.stroke();
+
+</script>
