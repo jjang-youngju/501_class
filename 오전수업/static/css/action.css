@@ -1,0 +1,28 @@
+
+#wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: column; /*세로방향으로 배치*/
+}
+
+#main-section{
+    order: 1;
+    width: 100%;
+    background: #183786;
+}
+.page-title{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 90%;
+    padding: 5% 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+@media all and (min-width:780px){
+    html{font-size:20px;}
+}
+/* PC */
+@media all and (min-width:960px){
+    html{font-size:24px;}
+}
