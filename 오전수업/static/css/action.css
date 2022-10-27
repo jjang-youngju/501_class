@@ -10,15 +10,53 @@
     width: 100%;
     background: #183786;
 }
+#image-section{
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+}
+.image_wrap{
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+.imgb1{
+    width: 36%;
+    background: hotpink;
+    font-size: 5vw;
+}
+.imgb2{
+    width: 64%;
+    background: lightpink;
+    font-size: 3vh;
+}
+.image-box{
+    height: 350px;
+}
+#multi-section{
+    width: 100%;
+}
+#multi-section>div{
+    width: 70%;
+    display: inline-block;
+    margin: 0 auto;
+}
+#multi-section img, #multi-section video{
+    width: 100%;
+    max-width: 100%;
+}
 .page-title{
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 90%;
-    padding: 5% 5%;
+    width: calc( 100% - 100px );
+    padding: 5% 50px;
     max-width: 1000px;
     margin: 0 auto;
 }
+/* 테블릿 */
 @media all and (min-width:780px){
     html{font-size:20px;}
 }
