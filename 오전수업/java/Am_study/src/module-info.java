@@ -1,0 +1,2 @@
+module Am_study {
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+</head>
+
+<body>
+	<h2>안녕하세요 여기는 EMP 화면 입니다.</h2>
+	
+	<input id="empno" type="text" placeholder="사원번호를 입력하세요.">
+	<input id="ename" type="text" placeholder="사원이름을 입력하세요.">
+	<input id="job" type="text" placeholder="사원직책을 입력하세요.">
+	<input id="sal" type="text" placeholder="사원급여를 입력하세요.">
+	<button type="button" onclick="join()">사원추가</button>
+	
+	<table id="data">
+  <tr>
+    <th>EMPNO</th>
+    <th>ENAME</th>
+    <th>JOB</th>
+    <th>HIREDATE</th>
+    <th>SAL</th>
+  </tr>
+</table>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.js"
+    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+callMyAPI(); 	// 함수호출
+  	
+  	function callMyAPI(){
+  		//ajax : 백엔드와 프론트가 통신하는 기능!
+  		//type : GET == Controller에 GetMapping
+  		$.ajax({
+  			url:'/api/v1/emp',
+  			type:'GET',
+  			dataType : 'json',
+  			success : function (response){
+  				for(var i in response){
+  					let tr = $("<tr></tr>");
+  					let empno = $("<td>"+response[i].empno+"</td>");
+  					let ename = $("<td>"+response[i].ename+"</td>");
+  					let job = $("<td>"+response[i].job+"</td>");
+  					let hiredate = $("<td>"+response[i].hiredate+"</td>");
+  					let sal = $("<td>"+response[i].sal+"</td>");
+  					tr.append(empno);
+  					tr.append(ename);
+  					tr.append(job);
+  					tr.append(hiredate);
+  					tr.append(sal);
+  					$('#data').append(tr);
+  				}
+  				
+  			}
+  		});
+}
+  		function join(){
+  	  		var empno = $('#empno').val();
+  	  		var ename = $('#ename').val();
+  	  		var job = $('#job').val();
+  	  		var sal = $('#sal').val();
+  	  		
+  	  		var jsonData = {
+  	  				"empno" : empno,
+  	  				"ename" : ename,
+  	  				"job" : job,
+  	  				"sal" : sal
+  	  		}
+  	  		
+  	  	//AJAX 호출
+  	    $.ajax({
+  	        url : '/api/v1/emp/join',
+  	        contentType:'application/json',//서버에 json타입으로 보낼 예정(요청)
+  	        type : 'POST',
+  	        data : JSON.stringify(jsonData),
+  	        dataType: 'json',
+  	        success: function (response) {  
+  	        	console.log(response);
+  	        	location.reload(); //새로고침
+  	          }
+  	      })
+  	  	}
+  		
+  	
+    </script>
+</html>
