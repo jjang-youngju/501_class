@@ -95,6 +95,9 @@ public class ApiController {
 		list.add(movie);
 		list.add(movie2);
 		
+//		list.get(0).getTitle()
+//		movie.getTitle()
+		
 		return list;
 	}
 	
