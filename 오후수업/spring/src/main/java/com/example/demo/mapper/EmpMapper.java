@@ -33,4 +33,38 @@ public interface EmpMapper {
 	List<DeptVO> selectDept();
 	
 	int insertEmp(EmpVO vo);
+	
+	/**
+	 * @Since : 2022. 12. 1.
+	 * @Author : jjangyoung
+	 * @Return : int
+	 * @Comment : 사원 삭제
+	 */
+	int deleteEmp(int empno); // 하나만 필요할때는 객체를 넘겨줄 필요가 없다.
+	
+	int insertDept(DeptVO vo);
+	
+	/**
+	 * @Since : 2022. 12. 1.
+	 * @Author : jjangyoung
+	 * @Return : int
+	 * @Comment : 부서 삭제
+	 */
+	int deleteDept(int deptno);
+	
+	/**
+	 * @Since : 2022. 12. 1.
+	 * @Author : jjangyoung
+	 * @Return : int
+	 * @Comment : 사원정보수정
+	 */
+	int updateEmp(EmpVO vo);
+	
+	/**
+	 * @Since : 2022. 12. 1.
+	 * @Author : jjangyoung
+	 * @Return : int
+	 * @Comment : 부서정보수정
+	 */
+	int updateDept(DeptVO vo);
 }

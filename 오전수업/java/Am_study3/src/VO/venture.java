@@ -1,6 +1,6 @@
 package VO;
 
-public class venture {
+public class venture implements Comparable {
 	private int num;
 	private String company;
 	private String addr;
@@ -16,6 +16,28 @@ public class venture {
 		this.category = category;
 		this.business_name = business_name;
 		this.product = product;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		//	사용자정의 클래스에서 equals를 구현할때 어떤 대상을 비교할것인지 정해야 한다.
+		//	그냥 equals 메소드가 동작안하는 이유는 비교대상이 없기 때문에 동작 못하는것
+		//	그래서 클래스에 equals를 구현해서 비교
+		venture tmp = (venture)obj;
+		if(this.num == tmp.num)
+			return true;
+		return false;
+	}
+	
+	
+	public int compareTo(Object o) {
+		venture tmp = (venture)o;
+		return this.company.compareTo(tmp.company);
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.addr.hashCode();
 	}
 	
 	@Override

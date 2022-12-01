@@ -26,6 +26,20 @@ tr:nth-child(even) {
 <body>
 	<h2>안녕하세요 여기는 DEPT 화면 입니다.</h2>
 	
+	<input id="deptno" type="text" placeholder="부서번호를 입력해주세요">
+	<input id="dname" type="text" placeholder="부서이름을 입력해주세요">
+	<input id="loc" type="text" placeholder="부서위치를 입력해주세요">
+	<button type="button" onclick="join()">부서 추가</button>
+	
+	<h3>부서 삭제</h3>
+	<input id="d_deptno" type="text" placeholder="부서번호를 입력해주세요">
+	<button type="button" onclick="doDelete()">부서삭제</button>
+	
+	<h3>부서 수정</h3>
+	<input id="u_deptno" type="text" placeholder="부서번호를 입력해주세요">
+	<input id="u_dname" type="text" placeholder="부서이름을 입력해주세요">
+	<input id="u_loc" type="text" placeholder="부서위치를 입력해주세요">
+	<button type="button" onclick="doUpdate()">부서 수정</button>
 	
 	
 	<table id="data">
@@ -65,7 +79,67 @@ callMyAPI(); 	// 함수호출
   		});
   		
   	}
-  	
+
+		function join(){
+			var deptno = $('#deptno').val();
+			var dname = $('#dname').val();
+			var loc = $('#loc').val();
+			
+			var jsonData = {
+					"deptno" : deptno,
+					"dname" : dname,
+					"loc" : loc
+			}
+			$.ajax({
+				url : '/api/v1/dept/join',
+				contentType : 'application/json',
+				type : 'POST',
+				data : JSON.stringify(jsonData),
+				dataType : 'json',
+				success : function (response){
+					console.log(response);
+					location.reload();
+				}
+			});
+		}
+		
+		function doDelete(){
+			var d_deptno = $('#d_deptno').val();
+			
+			$.ajax({
+				url : '/api/v1/dept/'+d_deptno,
+				type : 'DELETE',
+				dataType : 'json',
+				success : function (response){
+					alert('부서삭제완료');
+					location.reload();
+				}
+			});
+		}
+		
+		function doUpdate(){
+			var deptno = $('#u_deptno').val();
+			var dname = $('#u_dname').val();
+			var loc = $('#u_loc').val();
+			
+			var jsonData = {
+					"deptno" : deptno,
+					"dname" : dname,
+					"loc" : loc
+			}
+			
+			$.ajax({
+				url : '/api/v1/dept',
+				type : 'PATCH',
+				contentType : 'application/json',
+				data : JSON.stringify(jsonData),
+				dataType : 'json',
+				success : function(response){
+					alert('부 서 수 정 완 료');
+					location.reload();
+				}
+			});
+		}
   	
     </script>
 </html>
