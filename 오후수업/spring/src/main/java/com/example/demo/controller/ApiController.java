@@ -25,6 +25,7 @@ import com.example.demo.vo.EmpVO;
 import com.example.demo.vo.Login;
 import com.example.demo.vo.Login2;
 import com.example.demo.vo.Movie;
+import com.example.demo.vo.UsersVO;
 
 
 /*
@@ -202,4 +203,28 @@ public class ApiController {
 	public int callDeptUpdate(@RequestBody DeptVO dept) {
 		return empMapper.updateDept(dept);
 	}
+	
+	
+	@PostMapping("/api/v1/users")
+	public int callUsersJoin(@RequestBody UsersVO vo) {
+		return empMapper.insertUsers(vo);
+	}
+	
+	@PostMapping("/api/v1/login")
+	public int callUserLogin(@RequestBody UsersVO vo) {
+		return empMapper.selectUsersFindById(vo);
+	}
+	@GetMapping("/api/v1/users")
+	public List<UsersVO> callUsers(){
+		return empMapper.selectUsers();
+	}
+	@DeleteMapping("/api/v1/Users/{id}") // Delete = Delete
+	public int callUsersDelete(@PathVariable String id) {
+		return empMapper.deleteUsers(id);
+	}
+	@PatchMapping("/api/v1/users")
+	public int callUsersUpdate(@RequestBody UsersVO users) {
+		return empMapper.updateUsers(users);
+	}
+	
 }
