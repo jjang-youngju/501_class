@@ -40,6 +40,8 @@ import com.example.demo.vo.UsersVO;
 @RestController
 public class ApiController {
 	
+//	final String ROOT_URL = "/api/v1";
+	
 	/*
 	 * 클래스 이름 : 앞에 대문자로 시작 ex) Apple(o) apple(x)
 	 * 변수 명 : 상수를 제외한 변수 이름은 소문자  String name(o) String Name(x)
@@ -53,7 +55,7 @@ public class ApiController {
 	@Autowired
 	EmpMapper empMapper;
 	
-	@GetMapping("/api/v1/sample")
+//	@GetMapping(ROOT_URL+"/sample")
 	public List<String> callData(){
 		
 		List<String> list = new ArrayList<String>();
@@ -226,5 +228,11 @@ public class ApiController {
 	public int callUsersUpdate(@RequestBody UsersVO users) {
 		return empMapper.updateUsers(users);
 	}
+	
+	@GetMapping("/api/v1/users/{id}")
+	   public boolean callUser(@PathVariable String id) {
+	      
+	      return apiService.checkUser(id);
+	   }
 	
 }

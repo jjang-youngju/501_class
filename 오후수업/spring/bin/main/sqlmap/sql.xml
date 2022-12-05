@@ -78,7 +78,13 @@
 	
 	<!-- count는 int형으로 리턴 -->
 	<select id="selectUsersFindById" resultType="integer">
-		SELECT count(*) FROM users WHERE id = #{id} AND pw = #{pw}
+		SELECT count(*) FROM users 
+		WHERE id = #{id} 
+		<!-- pw에 null이 들어가있으면 실행하지 말아라 -->
+		<if test="pw != null ">
+			AND pw = #{pw}			
+		</if>
+		
 	</select>
 	
 	<select id="selectUsers" resultType="com.example.demo.vo.UsersVO">

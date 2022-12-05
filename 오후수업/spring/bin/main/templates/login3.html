@@ -7,6 +7,7 @@
 <body>
 	<h3>DW 회원가입</h3>
 	<input id="userId" type="text" placeholder="아이디를 입력해주세요">
+	<button type="button" onclick="doCheck()">아이디 체크</button>
 	<input id="userName" type="text" placeholder="고객이름을 입력해주세요">
 	<input id="userPw" type="password" placeholder="비밀번호를 입력해주세요">
 	<button type="button" onclick="doJoin()">회원가입</button>
@@ -16,21 +17,35 @@
 	<input id="i_userName" type="password" placeholder="비밀번호를 입력해주세요">
 	<button type="button" onclick="doLogin()">로그인</button>
 	
-	<h3>회원 삭제</h3>
-	<input id="d_userId" type="text" placeholder="id를 입력해주세요">
-	<button type="button" onclick="doDelete()">회원삭제</button>
-	
-	<h3>부서 수정</h3>
-	<input id="u_userId" type="text" placeholder="아이디를 입력해주세요">
-	<input id="u_userName" type="text" placeholder="고객이름을 입력해주세요">
-	<input id="u_userPw" type="text" placeholder="비밀번호를 입력해주세요">
-	<button type="button" onclick="doUpdate()">부서 수정</button>
-
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.js"
 	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
 	crossorigin="anonymous"></script>
 	<script type="text/javascript">
+	
+	var isCheck = false;
+	// 아이디 중복 체크 : 이미 가입된 아이디 찾기!
+	function doCheck(){
+		console.log('a');
+		var id = $('#userId').val();
+		$.ajax({
+			url : '/api/v1/users/'+id,
+			type : 'GET',
+			dataType : 'json',
+			success : function(response){
+				// true면 이미 가입한 아이디가 존재!
+				if(response){
+					alert('이미 가입된 아이디 입니다!');
+					return false;
+				}else{
+					alert('사용 가능한 아이디 입니다!');
+					isCheck = true;
+					return false;
+				}
+			}
+		})
+	}
+	
 	function doLogin(){
 		var id = $('#i_userId').val();
 		var pw = $('#i_userName').val();
@@ -100,44 +115,5 @@
 				}
 			});
 		}
-		
-		function doDelete(){
-			var d_userId = $('#d_userId').val();
-			
-			$.ajax({
-				url : '/api/v1/Users/'+d_userId,
-				type : 'DELETE',
-				dataType : 'json',
-				success : function (response){
-					alert('회원삭제완료');
-					location.reload();
-				}
-			});
-		}
-		
-		function doUpdate(){
-			var u_userId = $('#u_userId').val();
-			var u_userName = $('#u_userName').val();
-			var u_userPw = $('#u_userPw').val();
-			
-			var jsonData = {
-					"id" : u_userId,
-					"name" : u_userName,
-					"pw" : u_userPw
-			}
-			
-			$.ajax({
-				url : '/api/v1/users',
-				type : 'PATCH',
-				contentType : 'application/json',
-				data : JSON.stringify(jsonData),
-				dataType : 'json',
-				success : function(response){
-					alert('회 원 수 정 완 료');
-					location.reload();
-				}
-			});
-		}
-		
 	</script>
 </html>

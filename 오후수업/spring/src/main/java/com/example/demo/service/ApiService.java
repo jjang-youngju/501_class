@@ -3,10 +3,13 @@ package com.example.demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.mapper.EmpMapper;
 import com.example.demo.vo.Movie;
+import com.example.demo.vo.UsersVO;
 
 @Service
 public class ApiService {
@@ -14,6 +17,23 @@ public class ApiService {
 //window -> preference -> code templates -> edit template -> 내용수정 
 //	-> 설정완료후 메소드이름 클릭하고 "Alt + shift +j"누르기
 
+	@Autowired
+	EmpMapper empMapper;
+	
+	
+	public boolean checkUser(String id) {
+		
+		UsersVO vo = new UsersVO();
+		vo.setId(id);
+		
+		int rows = empMapper.selectUsersFindById(vo);
+		if(rows > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	
    /**
  * @Since : 2022. 11. 28.
  * @Author : jjangyoung
