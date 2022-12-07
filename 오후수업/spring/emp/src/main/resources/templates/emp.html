@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>사원 목록 페이지</title>
+<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+
+</head>
+<body>
+
+<!--  사원목록 구현하기 -->
+	<h3>사원 목록</h3>
+	<table id="data">
+	<th>EMPNO</th>
+	<th>ENAME</th>
+	<th>JOB</th>
+	<th>HIREDATE</th>
+	<th>SAL</th>
+	<th>DNAME</th>
+	<th>LOC</th>
+	</table>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.js"
+	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+	
+<script type="text/javascript">
+callMyAPI(); // 함수호출
+
+function callMyAPI() {
+	//ajax : 백엔드와 프론트가 통신하는 기능!
+	//type : GET == Controller에 GetMapping
+	$.ajax({
+		url : '/api/v1/emp',
+		type : 'GET',
+		dataType : 'json',
+		success : function(response) {
+			for ( var i in response) {
+				let tr = $("<tr></tr>");
+				let empno = $("<td>" + response[i].empno + "</td>");
+				let ename = $("<td>" + response[i].ename + "</td>");
+				let job = $("<td>" + response[i].job + "</td>");
+				let hiredate = $("<td>" + response[i].hiredate + "</td>");
+				let sal = $("<td>" + response[i].sal + "</td>");
+				let dname = $("<td>" + response[i].dname + "</td>");
+				let loc =  $("<td>" + response[i].loc + "</td>");
+				tr.append(empno);
+				tr.append(ename);
+				tr.append(job);
+				tr.append(hiredate);
+				tr.append(sal);
+				tr.append(dname);
+				tr.append(loc);
+				$('#data').append(tr);
+			}
+
+		}
+	});
+}
+
+</script>
+</html>
