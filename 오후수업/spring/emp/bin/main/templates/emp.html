@@ -19,10 +19,43 @@ td, th {
 tr:nth-child(even) {
 	background-color: #dddddd;
 }
+tr:hover{
+	cursor: pointer;
+}
 </style>
 
 </head>
 <body>
+
+<!-- 사원 상세 정보 -->
+	<h3>사원 정보</h3>
+	<input id="ename" type="text" disabled="disabled" placeholder=" 사원 이름 ">
+	<input id="comm" type="text" disabled="disabled" placeholder=" 사원 보너스 ">
+	<input id="sal" type="text" disabled="disabled" placeholder=" 사원 급여 ">
+	
+<!-- 사원 추가 -->
+	<h3>사원 추가</h3>
+	<input id="i_empno" type="text" placeholder="사원번호">
+	<input id="i_ename" type="text" placeholder="사원이름">
+	<input id="i_job" type="text" placeholder="사원직책을">
+	<input id="i_hiredate" type="text" placeholder="사원입사날짜">
+	<input id="i_sal" type="text" placeholder="사원급여">
+	<input id="i_deptno" type="text" placeholder="부서번호">
+	<button type="button" onclick="join()">사원추가</button>
+
+<!-- 사원 수정 -->
+	<h3>사원 수정</h3>
+	<input id="u_empno" type="text" placeholder="사원번호">
+	<input id="u_job" type="text" placeholder="사원직책">
+	<input id="u_sal" type="text" placeholder="사원급여">
+	<button type="button" onclick="doUpdate()">사원 수정</button>
+	
+<!-- 사원 삭제 -->
+	<h3>사원 삭제</h3>
+	<input id="d_empno" type="text" placeholder=" 사원번호">
+	<button type="button" onclick="doDelete()">사원 삭제</button>
+	
+
 
 <!--  사원목록 구현하기 -->
 	<h3>사원 목록</h3>
@@ -52,7 +85,7 @@ function callMyAPI() {
 		dataType : 'json',
 		success : function(response) {
 			for ( var i in response) {
-				let tr = $("<tr></tr>");
+				let tr = $("<tr onclick ='getEmp("+response[i].empno +")'></tr>");
 				let empno = $("<td>" + response[i].empno + "</td>");
 				let ename = $("<td>" + response[i].ename + "</td>");
 				let job = $("<td>" + response[i].job + "</td>");
@@ -73,6 +106,93 @@ function callMyAPI() {
 		}
 	});
 }
+
+	function getEmp(empno){
+		$.ajax({
+			url : '/api/v1/emp/'+empno,
+			type : 'GET',
+			dataType : 'json',
+			success : function(response) {
+				$('#ename').val(response.ename);
+				$('#comm').val(response.comm);
+				$('#sal').val(response.sal);
+			}
+		});
+	}
+	
+	//사원추가
+	function join() {
+		var empno = $('#i_empno').val();
+		var ename = $('#i_ename').val();
+		var job = $('#i_job').val();
+		var hiredate =$('#i_hiredate').val();
+		var sal = $('#i_sal').val();
+		var deptno = $('#i_deptno').val();
+
+		var jsonData = {
+			"empno" : empno,
+			"ename" : ename,
+			"job" : job,
+			"hiredate" : hiredate,
+			"sal" : sal,
+			"deptno" : deptno
+		}
+		//AJAX 호출
+		$.ajax({
+			url : '/api/v1/emp/join',
+			contentType : 'application/json',//서버에 json타입으로 보낼 예정(요청)
+			type : 'POST',
+			data : JSON.stringify(jsonData),
+			dataType : 'json',
+			success : function(response) {
+				alert('사 원 추 가 완 료');
+				location.reload(); //새로고침
+			}
+		})
+	}
+	
+	// 사원 수정
+	function doUpdate() {
+		var empno = $('#u_empno').val();
+		var job = $('#u_job').val();
+		var sal = $('#u_sal').val();
+
+		var jsonData = {
+			"empno" : empno,
+			"job" : job,
+			"sal" : sal
+		};
+
+		$.ajax({
+			url : '/api/v1/emp',
+			type : 'PATCH',
+			contentType : 'application/json',//서버에 json타입으로 보낼 예정(요청)
+			data : JSON.stringify(jsonData),
+			dataType : 'json',
+			success : function(response) {
+				alert('사 원 수 정 완 료');
+				location.reload(); //새로고침
+			}
+		});
+	}
+	
+	//사원삭제
+	function doDelete() {// 함수 시작
+		// 제이쿼리 : $('#d_empnpo').val();
+		// 바닐라 스크립트 : document.getElementById('d_empno').value;
+		let d_empno = $('#d_empno').val();
+		// 사원삭제 ajax 연결하기
+		$.ajax({
+			url : '/api/v1/emp/' + d_empno,
+			type : 'DELETE',
+			dataType : 'json',
+			success : function(response) {
+				alert(' 사원삭제완료 ')
+				location.reload(); //새로고침
+			}
+		});
+
+	}//함수 끝
 
 </script>
 </html>

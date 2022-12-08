@@ -16,5 +16,38 @@
 		ON e.DEPTNO =d.DEPTNO
 		
 	</select>
+	
+	<select id="selectEmpFindByEmpno" resultType="com.dw.emp.vo.EmpVO">
+		SELECT ename, ifnull(sal,100) AS sal, ifnull(comm,0) AS comm FROM emp WHERE empno = #{empno}
+	</select>
+	
+	<insert id="insertEmp">
+		INSERT INTO emp
+		(
+			empno,
+			ename,
+			job,
+			hiredate,
+			sal,
+			deptno
+		)
+		VALUES
+		(
+			#{empno},
+			#{ename},
+			#{job},
+			#{hiredate},
+			#{sal},
+			#{deptno}
+		)
+	</insert>
+	
+	<update id="updateEmp">
+      UPDATE emp SET sal = #{sal}, job = #{job} WHERE empno = #{empno}
+   </update>
 
+	<delete id="deleteEmp">
+		DELETE FROM emp
+		WHERE empno = #{empno}
+	</delete>
 </mapper>

@@ -10,7 +10,22 @@ public class EmpVO {
 	private int sal;	//급여
 	private String dname;	//부서이름
 	private String loc;	//부서위치
+	private int comm; // 보너스
+	private int deptno; // 부서번호
 	
+	
+	public int getDeptno() {
+		return deptno;
+	}
+	public void setDeptno(int deptno) {
+		this.deptno = deptno;
+	}
+	public int getComm() {
+		return comm;
+	}
+	public void setComm(int comm) {
+		this.comm = comm;
+	}
 	public int getEmpno() {
 		return empno;
 	}
