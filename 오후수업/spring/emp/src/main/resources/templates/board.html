@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>디엔비코드 게시판</title>
+<style>
+body{
+	width: 100%;
+	background: black;
+}
+h1{
+	width: 1200px;
+	text-align: center;
+	color: white;
+}
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 1200px;
+	color: white;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+	<h1>디엔비코드 게시판</h1>
+	<button>게시물 작성</button>
+	<table id="data">
+		<th>게시판 번호</th>
+		<th>게시판 제목</th>
+		<th>작성자</th>
+		<th>작성날짜</th>
+		<th>조회수</th>
+	</table>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.js"
+	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+callMyAPI(); // 함수호출
+
+const API_KEY = '8a2122e8162dbef04694b9c3e0b6cdee'
+
+function callMyAPI() {
+	//ajax : 백엔드와 프론트가 통신하는 기능!
+	//type : GET == Controller에 GetMapping
+	$.ajax({
+		url : '/api/v1/board',
+		type : 'GET',
+		dataType : 'json',
+		success : function(response) {
+			for ( var i in response) {
+				let tr = $("<tr></tr>");
+				let board_no = $("<td>" + response[i].board_no + "</td>");
+				let title = $("<td><a href='#'>" + response[i].title + "</a></td>");
+				let writer = $("<td>" + response[i].writer + "</td>");
+				let create_at = $("<td>" + response[i].create_at + "</td>");
+				let board_count = $("<td>" + response[i].board_count + "</td>");
+				tr.append(board_no);
+				tr.append(title);
+				tr.append(writer);
+				tr.append(create_at);
+				tr.append(board_count);
+				$('#data').append(tr);
+			}
+
+		}
+	});
+}
+</script>
+</html>

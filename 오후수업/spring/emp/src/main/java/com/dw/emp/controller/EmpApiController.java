@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dw.emp.mapper.BoardMapper;
 import com.dw.emp.mapper.EmpMapper;
 import com.dw.emp.service.EmpService;
+import com.dw.emp.vo.BoardVO;
 import com.dw.emp.vo.EmpVO;
 
 @RestController
@@ -47,5 +49,13 @@ public class EmpApiController {
 	@DeleteMapping("/api/v1/emp/{empno}") // Delete = Delete
 	public int callEmpDelete(@PathVariable int empno) {
 		return empMapper.deleteEmp(empno);
+	}
+	
+	@Autowired
+	BoardMapper boardMapper;
+	
+	@GetMapping("/api/v1/board")
+	public List<BoardVO> callBoard(){
+		return boardMapper.selectBoard();
 	}
 }

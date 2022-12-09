@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dw.emp.vo.EmpVO;
+import com.dw.emp.vo.BoardVO;
 
 @Mapper
 public interface EmpMapper {
@@ -42,4 +43,5 @@ public interface EmpMapper {
 	 * @Comment : 사원삭제
 	 */
 	int deleteEmp(int empno);
+	
 }
