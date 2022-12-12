@@ -11,14 +11,17 @@
 	<div class="container">
 		<div class="section-input">
 			<div class="card-header">
-				<h6>게시물 작성</h6>
+				<h6>게시물 보기</h6>
 			</div>
 			<div class="input-wrapper">
+				<!-- 게시판 번호를 hidden으로 숨김! -->
+				<input id="boardNo" type="hidden" th:value="${boardNo}">
+			
 				<input id="title" type="text" placeholder="제목 입력..." /> 
 				<input id="writer" type="text" placeholder="작성자 입력..." />
 				<textarea id="content" name="content" rows="40"></textarea>
-				<button onclick="doWrite()">작성완료</button>
-				<button onclick="doBack()">뒤로가기</button>
+				<button onclick="doUpdate()">수정하기</button>
+				<button onclick="doDelete()">삭제하기</button>
 			</div>
 		</div>
 	</div>
@@ -28,39 +31,53 @@
 	crossorigin="anonymous"></script>
 <script src="//cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
+
+	getBoard(); //함수호출
+	
 	var editor = CKEDITOR.replace('content',{});
 	
-	function doWrite(){	//작성완료함수
-		var title = $('#title').val();
-		var writer = $('#writer').val();
-		var content = editor.getData();
-		
-		var jsonData = {
-				"title" : title,
-				"contents" : content,
-				"writer" : writer
-		}
+	function getBoard(){
+		var boardNo = $('#boardNo').val(); //hidden으로 받아온값
 		
 		$.ajax({
+			url : '/api/v1/board/'+boardNo,
+			type : 'GET',
+			dataType : 'json',
+			success : function(response) {
+				$('#title').val(response.title);
+				$('#writer').val(response.writer);
+				editor.setData(response.contents);
+			}
+		});
+	}
+	
+	function doDelete(){
+		
+	}
+	
+	function doUpdate(){
+		var title = $('#title').val();
+		var content = $('#content').val();
+		var writer = $('#writer').val();
+
+		var jsonData = {
+			"title" : title,
+			"contents" : content,
+			"writer" : writer
+		};
+
+		$.ajax({
 			url : '/api/v1/board',
+			type : 'PATCH',
 			contentType : 'application/json',//서버에 json타입으로 보낼 예정(요청)
-			type : 'POST',
 			data : JSON.stringify(jsonData),
 			dataType : 'json',
 			success : function(response) {
-				if(response>0)
-					alert("게시물 작성완료!");
-					/* 작성한 게시글 리셋!
-					$('#title').val('');
-                	$('#writer').val('');
-                	editor.setData(); */
-                	location.href = '/board'	
+				alert('게시글 수정완료');
+				location.reload(); //새로고침
 			}
-		})
-		
-	}
-	function doBack(){	//뒤로가기함수
-		location.href ='/board'; //게시물 주소
+		});
+
 	}
 	
 </script>

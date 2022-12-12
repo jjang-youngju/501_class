@@ -11,13 +11,5 @@ public class EmpController {
 		return "emp";
 	}
 	
-	@GetMapping("/board")
-	public String callBoardpage() {
-		return "board";
-	}
-	
-	@GetMapping("/write")
-	public String loadWritepage() {
-		return "write";
-	}
+
 }

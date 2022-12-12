@@ -51,11 +51,5 @@ public class EmpApiController {
 		return empMapper.deleteEmp(empno);
 	}
 	
-	@Autowired
-	BoardMapper boardMapper;
-	
-	@GetMapping("/api/v1/board")
-	public List<BoardVO> callBoard(){
-		return boardMapper.selectBoard();
-	}
+
 }

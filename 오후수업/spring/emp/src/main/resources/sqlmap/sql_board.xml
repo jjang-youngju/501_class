@@ -7,5 +7,21 @@
 		SELECT board_no,title,writer,DATE_FORMAT(create_at,"%Y-%m-%d") AS create_at,board_count From board
 	</select>
 
+	<insert id="insertBoard">
+		INSERT INTO board(
+			title,
+			contents,
+			writer
+		) VALUES (
+			#{title},
+			#{contents},
+			#{writer}	
+		)
+	</insert>
+	
+	<select id="selectBoardFindByBoardNo" resultType="com.dw.emp.vo.BoardVO">
+		SELECT title,contents,writer
+		FROM board WHERE board_no = #{boardNo}
+	</select>
 
 </mapper>
