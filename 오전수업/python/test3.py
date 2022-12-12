@@ -108,4 +108,17 @@ while True :
     me=""
 print(me,cnt)
 
+#쌤이푼거
 
+cnt = 0
+temp = ""
+while True:
+    word_cnt = random.randint(3,10)
+    wemp = ""
+    for i in range(word_cnt):
+        temp += random.choice(eng)
+    cnt+=1
+    if temp in word:
+        break
+
+print(temp+"    "+ str(cnt))
