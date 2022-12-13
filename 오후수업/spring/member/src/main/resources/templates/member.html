@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<style type="text/css">
+body{
+	width: 100%;
+}
+h1{
+	width: 1200px;
+	text-align: center;
+}
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 1200px;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+	<h1>member조회</h1>
+		<table id="data">
+			<th>아이디</th>
+			<th>나이</th>
+			<th>이름</th>
+		</table>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.js"
+	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+callMyAPI(); // 함수호출
+
+const API_KEY = '8a2122e8162dbef04694b9c3e0b6cdee'
+
+function callMyAPI() {
+	//ajax : 백엔드와 프론트가 통신하는 기능!
+	//type : GET == Controller에 GetMapping
+	$.ajax({
+		url : '/members',
+		type : 'GET',
+		dataType : 'json',
+		success : function(response) {
+			for ( var i in response) {
+				let tr = $("<tr></tr>");
+				let id = $("<td>"+ response[i].id +"</td>");
+				let age = $("<td>" + response[i].age + "</a></td>");
+				let name = $("<td>" + response[i].name + "</td>");
+				tr.append(id);
+				tr.append(age);
+				tr.append(name);
+				$('#data').append(tr);
+			}
+
+		}
+	});
+}
+</script>
+</html>
