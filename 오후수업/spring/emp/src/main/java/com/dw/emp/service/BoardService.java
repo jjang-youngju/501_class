@@ -19,4 +19,12 @@ public class BoardService {
 	public BoardVO selectBoardFindByBoardNo(int boardNo) {
 		return mapper.selectBoardFindByBoardNo(boardNo);
 	}
+	
+	public int updateBoard(BoardVO vo) {
+		return mapper.updateBoard(vo);
+	}
+	
+	public int deleteBoard(int boardNo) {
+		return mapper.deleteBoard(boardNo);
+	}
 }

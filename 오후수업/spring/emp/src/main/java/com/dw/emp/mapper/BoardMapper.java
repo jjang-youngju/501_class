@@ -22,4 +22,8 @@ public interface BoardMapper {
 	public int insertBoard(BoardVO vo);
 	
 	public BoardVO selectBoardFindByBoardNo(int boardNo);
+	
+	int updateBoard(BoardVO vo);
+	
+	int deleteBoard(int boardNo);
 }

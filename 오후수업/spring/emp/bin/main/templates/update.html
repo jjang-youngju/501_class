@@ -52,18 +52,31 @@
 	}
 	
 	function doDelete(){
-		
+		let boardNo = $('#boardNo').val();
+		// 사원삭제 ajax 연결하기
+		$.ajax({
+			url : '/api/v1/board/' + boardNo,
+			type : 'DELETE',
+			dataType : 'json',
+			success : function(response) {
+				alert(' 게시물삭제완료 ')
+				location.reload(); //새로고침
+			}
+		});
+
 	}
 	
 	function doUpdate(){
 		var title = $('#title').val();
-		var content = $('#content').val();
+		var content = editor.getData();
 		var writer = $('#writer').val();
+		var boardNo = $('#boardNo').val();
 
 		var jsonData = {
 			"title" : title,
 			"contents" : content,
-			"writer" : writer
+			"writer" : writer,
+			"boardNo" : boardNo
 		};
 
 		$.ajax({

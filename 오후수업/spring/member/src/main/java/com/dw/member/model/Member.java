@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +21,18 @@ public class Member {
 	private String name;	//멤버이름
 	@Column
 	private int age;	//나이
+	
+	//@JoinColumn => member테이블에 dept_id라는 컬럼(FK)생성
+	@ManyToOne
+	@JoinColumn(name="dept_id")
+	private Dept dept;
+	
+	public Dept getDept() {
+		return dept;
+	}
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
 	
 	public long getId() {
 		return id;
